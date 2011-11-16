@@ -40,14 +40,21 @@ function flipCard(el) {
 		onEnd: function() {
 			if(this.bgColor === "transparent") {
 				document.getElementById(aud_id).play();
+				document.getElementById(aud_id).onended = function() {
+					resetAudio(this.id);
+					checkForMatch();
+				};
 			}
 		}
 	});
 
 	el.addClass("flipped").unbind("click");
 	el.click(function() { revertCard(el); });
+}
 
-	checkForMatch();
+function resetAudio(audio_id) {
+	document.getElementById(audio_id).pause()
+    document.getElementById(audio_id).currentTime = 0;
 }
 
 function checkForMatch() {
@@ -63,9 +70,7 @@ function checkForMatch() {
 			});
 
 		} else {
-			setTimeout(function() {
-				flipped_cards.each(function(key, val) { $(this).click() });
-			}, 2700);
+			flipped_cards.each(function(key, val) { $(this).click() });
 		}
 	}
 }
