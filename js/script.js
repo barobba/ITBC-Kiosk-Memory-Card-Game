@@ -23,8 +23,6 @@ $(document).ready(function () {
 				aud_src = val.text.example.audioID;
 				word = val.text.example.text;
 
-				console.log(aud_src);
-
 				$('<dt class="card back" data-word="'+ word +'" id="'+id+'"><img src="img/back_of_card.png" alt="" /></dt>').click(function() { flipCard($(this)); }).appendTo("#game");
 				$('<dd class="card front" id="'+id+'_flip"><img src="' + img_src +'" alt="" /><audio id="' + id + '_audio" preload="auto"><source src="' + deck + aud_src + '.ogg" type="audio/ogg" /></audio></dt>').appendTo("#game");
 			});
@@ -40,7 +38,9 @@ function flipCard(el) {
 		color: "white",
 		content: $('#' + new_id),
 		onEnd: function() {
-			document.getElementById(aud_id).play();
+			if(this.bgColor === "transparent") {
+				document.getElementById(aud_id).play();
+			}
 		}
 	});
 
@@ -65,7 +65,7 @@ function checkForMatch() {
 		} else {
 			setTimeout(function() {
 				flipped_cards.each(function(key, val) { $(this).click() });
-			}, 1800);
+			}, 2700);
 		}
 	}
 }
