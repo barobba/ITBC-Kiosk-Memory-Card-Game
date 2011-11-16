@@ -3,48 +3,54 @@
 */
 
 $(document).ready(function () {
-	var deck = "deck1";
-
-	$.getJSON("packs/" + deck + "/_data.js", 
+	$.getJSON("packs/_cards.json",
 		function(json) {
-			$.each(json.cards, function(key, val) {
+			var img_src, aud_src, id;
+			var allcards = [];
 
-				// TODO: shuffle deck and duplicate them
-				
-				var img_src = json.pack_location + '/' + val.pic;
-				var aud_src = json.pack_location + '/' + val.aud;
+			for(card in json.cards) {
+				allcards.push(json.cards[card]);
+				allcards.push(json.cards[card]);
+			}
 
-				$('<dt class="card back" id="'+val.word+'"><img src="img/back_of_card.png" alt="" /></dt>').appendTo("#game");
-				$('<dd class="card front" id="'+val.word+'_flip"><img src="' + img_src +'" alt="" /><audio id="' + val.word + '_audio" preload="auto"><source src="' + aud_src + '" type="audio/mp3" /></audio></dt>').appendTo("#game");
+			allcards = $.shuffle(allcards);
+
+			$.each(allcards, function(key, val) {
+				img_src = val.pictureURL;
+				id = val.text.example.audioID;
+				aud_src = val.text.example.audioID;
+				word = val.text.example;
+
+				$('<dt class="card back" data="'+ word +'" id="'+id+'"><img src="img/back_of_card.png" alt="" /></dt>').click(function() { flipCard($(this)); }).appendTo("#game");
+				$('<dd class="card front" id="'+id+'_flip"><img src="' + img_src +'" alt="" /><audio id="' + id + '_audio" preload="auto"><source src="' + aud_src + '.mp3" type="audio/mp3" /></audio></dt>').appendTo("#game");
 			});
 		});
-
-	$('.back').live("click", function() { flipCard($(this)); });
 });
 
 function flipCard(el) {
 	var new_id = el.attr("id") + "_flip";
 	var aud_id = el.attr("id") + "_audio";
 
-		el.flip({
-			direction: "lr",
-			color: "white",
-			content: $('#' + new_id),
-			onEnd: function() {
-				document.getElementById(aud_id).play();
-			}
-		});
+	el.flip({
+		direction: "lr",
+		color: "white",
+		content: $('#' + new_id),
+		onEnd: function() {
+			document.getElementById(aud_id).play();
+		}
+	});
 
-	// TODO: Figure out reverting cards
-	/* el.die();
-	el.live("click", function() { revertCard(el); }); */
+	el.unbind("click");
+	el.click(function() { revertCard(el); });
 }
 
-/* function revertCard(el) {
-	el.revertFlip();
+function checkForMatch() {
 
-console.log("revert");
+}
+
+function revertCard(el) {
+	el.revertFlip();
 	
-	el.die();
-	el.live("click", function() { flipCard(el); });	
-} */
+	el.unbind("click");
+	el.click(function() { flipCard(el); });
+}

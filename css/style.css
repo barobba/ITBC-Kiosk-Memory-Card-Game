@@ -71,8 +71,8 @@ body { background-color: #CCDEF1; }
 
 dl { margin: 0; }
 .card img { height: 240px; }
-dt.card { height: 240px; width: 180px; float: left; 
-          margin: 0 10px 10px 0; background-color: blue; cursor: pointer; }
+dt.card { height: 240px; width: 180px; float: left; overflow: hidden;
+          margin: 0 10px 10px 0; cursor: pointer; }
 dd { display: none; }
 
 
