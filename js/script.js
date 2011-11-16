@@ -3,14 +3,16 @@
 */
 
 $(document).ready(function () {
-	$.getJSON("packs/_cards.json",
-		function(json) {
+	var deck = "packs_cards/27617/";
+
+	$.getJSON(deck + "_data.json",
+		function(cards) {
 			var img_src, aud_src, id;
 			var allcards = [];
 
-			for(card in json.cards) {
-				allcards.push(json.cards[card]);
-				allcards.push(json.cards[card]);
+			for(card in cards) {
+				allcards.push(cards[card]);
+				allcards.push(cards[card]);
 			}
 
 			allcards = $.shuffle(allcards);
@@ -21,8 +23,10 @@ $(document).ready(function () {
 				aud_src = val.text.example.audioID;
 				word = val.text.example.text;
 
+				console.log(aud_src);
+
 				$('<dt class="card back" data-word="'+ word +'" id="'+id+'"><img src="img/back_of_card.png" alt="" /></dt>').click(function() { flipCard($(this)); }).appendTo("#game");
-				$('<dd class="card front" id="'+id+'_flip"><img src="' + img_src +'" alt="" /><audio id="' + id + '_audio" preload="auto"><source src="' + aud_src + '.mp3" type="audio/mp3" /></audio></dt>').appendTo("#game");
+				$('<dd class="card front" id="'+id+'_flip"><img src="' + img_src +'" alt="" /><audio id="' + id + '_audio" preload="auto"><source src="' + deck + aud_src + '.ogg" type="audio/ogg" /></audio></dt>').appendTo("#game");
 			});
 		});
 });
