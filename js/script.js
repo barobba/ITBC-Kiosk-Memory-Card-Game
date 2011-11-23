@@ -13,7 +13,7 @@ $(document).ready(function () {
       $('.ajax-loader-icon').remove();
 	  
 	    cards = cards.cards;
-			var img_src, aud_src, id;
+			var img_src, cardFilename, extension, aud_src, id;
 
 			// Create the DECK
 			var allcards = [];
@@ -32,7 +32,10 @@ $(document).ready(function () {
 			$.each(allcards, function(key, val) {
 			  
 				//img_src = val.pictureURL;
-			  img_src = 'packs_cards/' + packID + '/' + val.pictureFilename;
+			  
+			  extension = val.pictureFilename.split('.').pop();
+			  cardFilename = card.NID+'-CARD.'+extension;
+			  img_src = 'packs_cards/' + packID + '/' + cardFilename;
 				
 				id = val.text.example.audioID;
 				aud_src = val.text.example.audioID;
