@@ -1,0 +1,57 @@
+
+body {
+	margin: 0px;
+	}
+
+.hidden-parts {
+	display: none;
+}
+
+
+#pack-app #pack-app-layout {
+  width: 100%;
+  height: 100%;
+}
+
+#pack-app .pack-app-layout-column {
+  vertical-align: top;
+}
+
+#pack-app #pack-app-layout-left {
+  width: 225px;
+  height: 100%;
+}
+
+#pack-app #pack-app-layout-right {
+}
+
+#pack-app #pack-list-container {
+  margin: .5em;
+  border-right: 1px solid black;
+  padding: .5em;
+  background-color: rgb(230,230,230);
+  height: 90%;
+}
+
+#pack-app #pack-container {
+  margin: 1em;
+  padding: .5em;
+  background-color: rgb(230,230,230);
+}
+
+
+
+iframe {
+	height: 100%;
+	width: 100%;
+	border: none;
+	}
+
+
+
+
+.game-list-item-title {
+	font-size: 1.2em;
+	margin: 1em;
+}
+
