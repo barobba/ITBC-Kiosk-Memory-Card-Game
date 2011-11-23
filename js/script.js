@@ -90,7 +90,7 @@ function flipCard(el) {
   // Start the flip
 	el.flip({
 		direction: "lr",
-		color: "white",
+		color: "black",
 		content: $('#' + new_id),
   	
   	// When the flip is finished, then start playing the audio 
