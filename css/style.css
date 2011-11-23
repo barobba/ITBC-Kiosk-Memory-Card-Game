@@ -95,10 +95,10 @@ dd { display: none; }
 
 
 
-.matched {
+dt.matched {
 	background-color: white;
 }
-.matched img {
+dt.matched img {
 	display: none;
 }
 

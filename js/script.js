@@ -140,7 +140,7 @@ function checkForMatch() {
 	  
 	  // Mark the cards as matched
 		flipped_cards.each(function(key, val) {
-			$(this).removeClass("flipped").addClass("matched");
+			$(this).removeClass("flipped").addClass("matched").removeAttr('style');
 		});
 
 	} else {
