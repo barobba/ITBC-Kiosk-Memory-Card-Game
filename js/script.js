@@ -34,7 +34,7 @@ $(document).ready(function () {
 				//img_src = val.pictureURL;
 			  
 			  extension = val.pictureFilename.split('.').pop();
-			  cardFilename = card.NID+'-CARD.'+extension;
+			  cardFilename = val.NID+'-CARD.'+extension;
 			  img_src = 'packs_cards/' + packID + '/' + cardFilename;
 				
 				id = val.text.example.audioID;
