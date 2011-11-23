@@ -39,7 +39,7 @@ $(document).ready(function () {
 				
 				id = val.text.example.audioID;
 				aud_src = val.text.example.audioID;
-				word = val.text.example.text;
+				word = val.NID;
 
 				// Back of card
 				$('<dt class="card back" data-word="'+ word +'" id="'+id+'"><img src="img/back_of_card.png" alt="" /></dt>')
