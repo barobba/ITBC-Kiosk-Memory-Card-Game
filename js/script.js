@@ -53,7 +53,7 @@ $(document).ready(function () {
 				}).appendTo("#game");
 				
 				// Front of card
-				$('<dd class="card front" id="'+id+'_flip"><img src="' + img_src +'" alt="" /><audio id="' + id + '_audio" preload="auto"><source src="' + deck + aud_src + '.ogg" type="audio/ogg" /></audio></dt>')
+				$('<dd class="card front" id="'+id+'_flip"><img src="' + img_src +'" alt="" /><div class="card-text">'+val.text.example.text+'</div><audio id="' + id + '_audio" preload="auto"><source src="' + deck + aud_src + '.ogg" type="audio/ogg" /></audio></dt>')
 				.appendTo("#game");
 				
 			});

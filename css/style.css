@@ -74,6 +74,13 @@ dl { margin: 0; }
 .card img {
 }
 
+.card .card-text {
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	font-size: 1.4em;
+}
+
 
 
 dt.card { height: 240px; width: 180px; float: left; overflow: hidden;
