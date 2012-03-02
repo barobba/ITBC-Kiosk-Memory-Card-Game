@@ -62,7 +62,9 @@ $(window).ready(function(){
 
 function themePackListItem(pack) {
   var listItem = $("<div class='game-list-item'><div class='game-list-item-title'>TITLE</div></div>")
-  var link = $('<a />').attr('href', "index_game.html?pack="+pack.packID).attr('target', 'cardgame').html(pack.text.example.text);
+  var imgURL = './packs_cards/'+pack.packID+'/'+pack.NID+'-CARD.jpg';
+  var deckImage = '<div><img src="'+imgURL+'" /></div>';
+  var link = $('<a />').attr('href', "index_game.html?pack="+pack.packID).attr('target', 'cardgame').html(deckImage);
   listItem.children('.game-list-item-title').html(link);
   return listItem;
 }
